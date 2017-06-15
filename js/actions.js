@@ -1,5 +1,3 @@
-var bio = "";
-
 function main(){
     $(".drawer").hide();
     $(".bio").hide();
