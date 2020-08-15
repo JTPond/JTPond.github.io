@@ -1,2 +1,78 @@
+<p><img src="./archive/Simulation/Conways_Bacteria/Introduction/assets/header.gif" alt="Sample Board" /></p>
 <h1>Conway's Bacteria</h1>
-<p>Come back for more soon!</p>
+<p><em>Modified rules for Conway's game of life with colony forming behavior.</em></p>
+<h2>Repository</h2>
+<p><a href="https://github.com/JTPond/Conways_Bacteria">GitHub</a></p>
+<p><strong>Please leave comments as issue threads</strong></p>
+<h2>Context</h2>
+<p>While watching a popular YouTube video introduction to Conway's Game of Life, I noticed that all the clips they showed of pixel art animations of a GoL board looked like little bacteria. That started getting me interested in how it produces stable states, or &quot;colonies&quot;. This was when I started looking into writing my own version in Rust. My first instinct was to see what would happen if a cell could gain height in certain situations. This project is the result of research into that idea.</p>
+<p>Another thing I'm doing with this project is practicing a number of techniques that I think will be important in future projects, like collecting data with Calcify and analyzing it with ICalcify, outputting animations using the gif crate, and using rayon for multiprocessing. Conway's Bacteria uses all of these things, and I couldn't be more happy with how it's going.</p>
+<h2>Basic Rules</h2>
+<ol start="0">
+<li>Fixed border board, no infinite, or periodic boundary conditions.</li>
+<li>If a Cell and all of it's neighbors are either 0 or 1, then follow standard <a href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life">CGoL rules</a>.</li>
+<li>If a Cell has exactly 4 neighbors, one on each side, or one on each corner, it starts a Colony with its neighbors and grows to 2. Now it and all of it's neighbors follow Colony rules.</li>
+<li>If a cell is in a Colony, but with a height of 0, then if the sum of its neighbors' heights is greater or equal to 4 times its tallest neighbor then it goes to 1.</li>
+<li>If a cell is in a Colony, but with a height of 1 to one less than the maximum height, then if the sum of its neighbors' heights is greater or equal to 8 times its own height then it increases by 1.</li>
+<li>If a cell is at the maximum height or any of it's neighbors are one less than the maximum height, or greater, the cell is stable and nothing happens.</li>
+</ol>
+<h2>Code</h2>
+<p>I went very simple with the program itself, and there are some upgrades I could do to cut down on compiles between runs, but it's a single file, so as long as I'm not updating my dependencies it compiles super fast.</p>
+<h3>Rules</h3>
+<p>This is how the algorithm above is handled, the <code>self</code> being mentioned is the <code>Bacteria</code> struct that these functions implement.</p>
+<pre><code class="language-rust">  fn single_tick(&amp;mut self) {
+      let t_sum: u16 = self.neighbors.iter().sum();
+      if t_sum == 3 {
+          if self.height == 0 {
+              self.height = 1;
+          }
+      }
+      else if t_sum &lt; 2 || t_sum &gt; 3{
+          if t_sum == 4 {
+              let e_sum: u16 = self.neighbors.iter().enumerate()
+              			.filter(|(i,_)| i%2 == 0).map(|(_,x)| x).sum();
+              let o_sum: u16 = self.neighbors.iter().enumerate()
+              			.filter(|(i,_)| i%2 != 0).map(|(_,x)| x).sum();
+              if e_sum == 4 || o_sum == 4 {
+                  self.height += 1;
+              } else {
+                  if self.height == 1 {
+                      self.height = 0;
+                  }
+              }
+          } else {
+              if self.height == 1 {
+                  self.height = 0;
+              }
+          }
+      }
+  }
+
+  fn colony_tick(&amp;mut self, n_max: u16) {
+      let t_sum: u16 = self.neighbors.iter().sum::&lt;u16&gt;();
+      if t_sum &gt;= (8*(self.height-1)).into() {
+          if self.height &gt; 0 {
+              self.height += 1;
+          }
+      }
+      else if self.height == 0 {
+          if t_sum &gt;= 4*n_max {
+              self.height += 1;
+          }
+      }
+  }
+
+  pub fn tick(&amp;mut self) {
+      if let Some(n_max) = self.neighbors.iter().max() {
+          let b_max = *n_max;
+          if b_max &lt;= 1 &amp;&amp; self.height &lt;= 1 {
+              self.single_tick();
+          } else if b_max &lt; 3 &amp;&amp; self.height &lt;= 3  {
+              self.colony_tick(b_max);
+          }
+      }
+  }
+</code></pre>
+<p>Check out the rest on <a href="https://github.com/JTPond/Conways_Bacteria">GitHub</a></p>
+<h2>Things I'm interested in</h2>
+<p>So far in my research I've found interesting variability in both how much of the board is seeded (sneezed on?) and also the maximum allowed height. I've seen this affect the time to a max height colony, the length of the initial dip in number of live cells, and the time to a stable board where the total height on the board stops growing.</p>

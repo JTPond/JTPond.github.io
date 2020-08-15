@@ -32,8 +32,9 @@ pre {
 
 #work__page.open img {
   max-height: 80vh;
-  max-width: 75vw;
+  max-width: 100%;
   margin-right: 5vw;
+  box-sizing: border-box;
 }
 
 #work__page.open p {
@@ -209,6 +210,14 @@ pre {
     width: 100%;
     margin: 0px 0px 10px 0px;
     display: block;
+  }
+
+  #title__bar .title {
+    font-size: 3vh;
+  }
+
+  #folder__control {
+    font-size: 3vh;
   }
 
 }

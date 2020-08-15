@@ -1,63 +1,165 @@
 {
+  "self": {
+    "parent": null,
+    "f_order": [
+      "About",
+      "Open_Source",
+      "Simulation",
+      "Machine_Learning"
+    ],
+    "a_order": []
+  },
   "Machine_Learning": {
+    "self": {
+      "parent": ".",
+      "f_order": [],
+      "a_order": [
+        "Introduction",
+        "Critters"
+      ]
+    },
     "Introduction": {
       "pinned": false,
-      "mtime": "2020-07-14T20:34:25",
+      "mtime": "2020-08-04T21:13:36",
       "url": "./archive/Machine_Learning/Introduction/article.html"
     },
     "Critters": {
       "pinned": false,
-      "mtime": "2020-07-14T20:35:07",
+      "mtime": "2020-08-04T21:13:36",
       "url": "./archive/Machine_Learning/Critters/article.html"
     }
   },
   "Open_Source": {
-    "ICalcify": {
+    "self": {
+      "parent": ".",
+      "f_order": [
+        "Calcify",
+        "ICalcify",
+        "python-requirements"
+      ],
+      "a_order": []
+    },
+    "Calcify": {
+      "self": {
+        "parent": "Open_Source",
+        "f_order": [],
+        "a_order": [
+          "Introduction"
+        ]
+      },
       "Introduction": {
-        "pinned": false,
-        "mtime": "2020-07-14T22:12:07",
-        "url": "./archive/Open_Source/ICalcify/Introduction.html"
+        "pinned": true,
+        "mtime": "2020-08-04T21:13:36",
+        "url": "./archive/Open_Source/Calcify/Introduction/article.html"
       }
     },
     "python-requirements": {
+      "self": {
+        "parent": "Open_Source",
+        "f_order": [],
+        "a_order": [
+          "Introduction"
+        ]
+      },
       "Introduction": {
         "pinned": false,
-        "mtime": "2020-07-14T21:56:45",
+        "mtime": "2020-08-04T21:13:36",
         "url": "./archive/Open_Source/python-requirements/Introduction.html"
       }
     },
-    "Calcify": {
+    "ICalcify": {
+      "self": {
+        "parent": "Open_Source",
+        "f_order": [],
+        "a_order": [
+          "Introduction",
+          "Notebook"
+        ]
+      },
+      "Notebook": {
+        "pinned": false,
+        "mtime": "2020-08-07T15:49:32",
+        "url": "./archive/Open_Source/ICalcify/notebook/article.html"
+      },
       "Introduction": {
-        "pinned": true,
-        "mtime": "2020-07-21T20:42:29",
-        "url": "./archive/Open_Source/Calcify/Introduction/article.html"
+        "pinned": false,
+        "mtime": "2020-08-04T21:13:36",
+        "url": "./archive/Open_Source/ICalcify/Introduction.html"
       }
     }
   },
   "About": {
+    "self": {
+      "parent": ".",
+      "f_order": [],
+      "a_order": [
+        "Me",
+        "This_Site"
+      ]
+    },
     "Me": {
       "pinned": true,
-      "mtime": "2020-07-14T20:09:11",
+      "mtime": "2020-08-04T21:13:36",
       "url": "./archive/About/Me/article.html"
     },
     "This_Site": {
       "pinned": false,
-      "mtime": "2020-07-14T20:07:10",
+      "mtime": "2020-08-04T21:13:36",
       "url": "./archive/About/This_Site/article.html"
     }
   },
   "Simulation": {
+    "self": {
+      "parent": ".",
+      "f_order": [
+        "Conways_Bacteria",
+        "Universe_in_a_Box"
+      ],
+      "a_order": []
+    },
     "Conways_Bacteria": {
+      "self": {
+        "parent": "Simulation",
+        "f_order": [],
+        "a_order": [
+          "Introduction",
+          "Stable_States",
+          "Experiment_1",
+          "Appendix"
+        ]
+      },
       "Introduction": {
-        "pinned": false,
-        "mtime": "2020-07-14T21:45:04",
+        "pinned": true,
+        "mtime": "2020-08-14T12:47:20",
         "url": "./archive/Simulation/Conways_Bacteria/Introduction/article.html"
+      },
+      "Experiment_1": {
+        "pinned": false,
+        "mtime": "2020-08-15T17:53:49",
+        "url": "./archive/Simulation/Conways_Bacteria/Experiment_1/article.html"
+      },
+      "Stable_States": {
+        "pinned": false,
+        "mtime": "2020-08-14T16:32:32",
+        "url": "./archive/Simulation/Conways_Bacteria/Stable_States/article.html"
+      },
+      "Appendix": {
+        "pinned": false,
+        "mtime": "2020-08-15T18:13:37",
+        "url": "./archive/Simulation/Conways_Bacteria/Appendix/article.html"
       }
     },
     "Universe_in_a_Box": {
+      "self": {
+        "parent": "Simulation",
+        "f_order": [],
+        "a_order": [
+          "Introduction"
+        ]
+      },
       "Introduction": {
         "pinned": false,
-        "mtime": "2020-07-14T22:48:19",
+        "mtime": "2020-08-04T21:13:36",
         "url": "./archive/Simulation/Universe_in_a_Box/Introduction/article.html"
       }
     }
