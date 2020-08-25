@@ -6,7 +6,6 @@ import { HPLink } from "./componants/hplink.js";
 class main {
     constructor() {
         this.index = new PathWizard();
-        // this.current = '/';
         this.root = document.getElementById('root__page');
     }
     fillRoot(content) {
@@ -17,13 +16,6 @@ class main {
             this.root.append(content);
         if (window.location.hash !== '') {
             window.dispatchEvent(new CustomEvent('hashchange'));
-            // if (window.location.hash.endsWith('/')) {
-            //   window.dispatchEvent(new CustomEvent('open_folder',{detail:window.location.hash.substr(1)}));
-            //
-            // }
-            // else {
-            //   window.dispatchEvent(new CustomEvent('open_article',{detail:window.location.hash.substr(1)}));
-            // }
         }
     }
 }
@@ -74,7 +66,6 @@ window.addEventListener('DOMContentLoaded', () => {
         browser_btn.src = "./style/assets/browser.svg";
         browser_btn.id = 'browser__btn';
         browser_btn.addEventListener('click', () => {
-            // window.dispatchEvent(new CustomEvent('toggle_browser'));
             switch (window.location.hash) {
                 case '':
                     window.location.hash = '/';
@@ -87,6 +78,7 @@ window.addEventListener('DOMContentLoaded', () => {
         let title = document.createElement('div');
         title.classList.add('title');
         title.textContent = "Calcify/Archive";
+        document.title = "Calcify/Archive";
         let controls = document.createElement('div');
         controls.classList.add('controls');
         let f_links = (new TBarControls('/')).getUrlControl();
@@ -127,76 +119,6 @@ window.addEventListener('DOMContentLoaded', () => {
                 tbar.classList.add('open');
             }
         });
-        // window.addEventListener('toggle_browser',() => {
-        //   if (wpage.classList.contains('open')) {
-        //     wpage.classList.remove('open');
-        //     tbar.classList.remove('open');
-        //     wpage.innerHTML = '';
-        //     window.location.hash = '';
-        //     controls.firstElementChild.replaceWith((new TBarControls('/')).getUrlControl());
-        //   } else {
-        //     __main__.current = '/';
-        //     let fc = new FolderComp(__main__.index.root);
-        //     wpage.append(fc.getHTML());
-        //     wpage.classList.add('open');
-        //     tbar.classList.add('open');
-        //     window.location.hash = __main__.current;
-        //   }
-        // });
-        //
-        // window.addEventListener('folder_opened',((e: CustomEvent<any>) => {
-        //   if (e.detail) {
-        //     __main__.current = __main__.current + `${e.detail}/`;
-        //     controls.firstElementChild.replaceWith((new TBarControls(__main__.current)).getUrlControl());
-        //     window.location.hash = __main__.current;
-        //   }
-        // }) as EventListener);
-        //
-        // window.addEventListener('article_opened',((e: CustomEvent<any>) => {
-        //   if (e.detail) {
-        //     __main__.current = __main__.current + `${e.detail}`;
-        //     controls.firstElementChild.replaceWith((new TBarControls(__main__.current)).getUrlControl());
-        //     window.location.hash = __main__.current;
-        //   }
-        // }) as EventListener);
-        //
-        // window.addEventListener('open_folder',((e: CustomEvent<any>) => {
-        //   if (e.detail) {
-        //     if (wpage.classList.contains('open')) {
-        //       wpage.innerHTML = '';
-        //     }
-        //     let fo: Folder = __main__.index.root.open(e.detail);
-        //     if (fo !== undefined) {
-        //       let fc = new FolderComp(fo);
-        //       wpage.append(fc.getHTML());
-        //       wpage.classList.add('open');
-        //       tbar.classList.add('open');
-        //       __main__.current = e.detail;
-        //       controls.firstElementChild.replaceWith((new TBarControls(e.detail)).getUrlControl());
-        //       window.location.hash = __main__.current;
-        //     }
-        //   }
-        // }) as EventListener);
-        //
-        // window.addEventListener('open_article',((e: CustomEvent<any>) => {
-        //   if (e.detail) {
-        //     if (wpage.classList.contains('open')) {
-        //       wpage.innerHTML = '';
-        //     }
-        //     let ao: Article = __main__.index.root.get(e.detail);
-        //     if (ao !== undefined) {
-        //       let ac = new ArticleComp(ao);
-        //       ac.getHTML().then((element) => {
-        //         wpage.append(element);
-        //         wpage.classList.add('open');
-        //         tbar.classList.add('open');
-        //         __main__.current = e.detail;
-        //         controls.firstElementChild.replaceWith((new TBarControls(e.detail)).getUrlControl());
-        //         window.location.hash = __main__.current;
-        //       });
-        //     }
-        //   }
-        // }) as EventListener);
         __main__.fillRoot(page);
     });
 });

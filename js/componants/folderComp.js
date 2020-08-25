@@ -11,11 +11,6 @@ export class FolderComp {
         cap.textContent = title.replace(/(?<!\\)_/g, ' ').replace(/\_/g, '_');
         fig.append(icon, cap);
         fig.addEventListener('click', () => {
-            // let sfc = new ArticleComp(art);
-            // let pg = document.getElementById('work__page');
-            // pg.innerHTML = '';
-            // pg.append(await sfc.getHTML());
-            // window.dispatchEvent(new CustomEvent('article_opened',{detail:title}));
             window.location.hash = window.location.hash + title;
         });
         return fig;
@@ -29,11 +24,6 @@ export class FolderComp {
         cap.textContent = title.replace(/(?<!\\)_/g, ' ').replace(/\_/g, '_');
         fig.append(icon, cap);
         fig.addEventListener('click', () => {
-            // let sfc = new FolderComp(fold);
-            // let pg = document.getElementById('work__page');
-            // pg.innerHTML = '';
-            // pg.append(sfc.getHTML());
-            // window.dispatchEvent(new CustomEvent('folder_opened',{detail:title}));
             window.location.hash = window.location.hash + title + '/';
         });
         return fig;

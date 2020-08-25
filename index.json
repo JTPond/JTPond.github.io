@@ -125,6 +125,7 @@
           "Introduction",
           "Stable_States",
           "Experiment_1",
+          "Experiment_2",
           "Appendix"
         ]
       },
@@ -140,13 +141,18 @@
       },
       "Stable_States": {
         "pinned": false,
-        "mtime": "2020-08-14T16:32:32",
+        "mtime": "2020-08-22T13:31:59",
         "url": "./archive/Simulation/Conways_Bacteria/Stable_States/article.html"
       },
       "Appendix": {
         "pinned": false,
-        "mtime": "2020-08-15T18:13:37",
+        "mtime": "2020-08-24T22:49:32",
         "url": "./archive/Simulation/Conways_Bacteria/Appendix/article.html"
+      },
+      "Experiment_2": {
+        "pinned": false,
+        "mtime": "2020-08-24T22:53:19",
+        "url": "./archive/Simulation/Conways_Bacteria/Experiment_2/article.html"
       }
     },
     "Universe_in_a_Box": {

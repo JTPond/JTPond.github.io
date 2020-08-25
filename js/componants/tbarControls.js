@@ -10,7 +10,6 @@ export class TBarControls {
     }
     open_folder(link) {
         return function () {
-            // window.dispatchEvent(new CustomEvent('open_folder',{detail:link}));
             window.location.hash = link;
         };
     }

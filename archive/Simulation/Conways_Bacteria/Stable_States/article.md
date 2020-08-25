@@ -12,3 +12,6 @@ So far my favorite thing has just been hunting down cool shapes in the stable co
 
 ### Spiral
 ![Spiral](./assets/spiral.gif "Spiral")
+
+### Dragonfly
+![Spiral](./assets/dragonfly.gif "Dragonfly")
