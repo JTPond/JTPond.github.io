@@ -73,7 +73,8 @@
         "f_order": [],
         "a_order": [
           "Introduction",
-          "Notebook"
+          "Notebook",
+          "New_Release"
         ]
       },
       "Notebook": {
@@ -85,6 +86,11 @@
         "pinned": false,
         "mtime": "2020-08-04T21:13:36",
         "url": "./archive/Open_Source/ICalcify/Introduction.html"
+      },
+      "New_Release": {
+        "pinned": false,
+        "mtime": "2020-09-12T12:07:53",
+        "url": "./archive/Open_Source/ICalcify/New_Release/article.html"
       }
     }
   },

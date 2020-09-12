@@ -121,6 +121,13 @@ pre {
   display: inline-block;
   width: 0;
   overflow-x: hidden;
+  animation: 1s ease-in 1s 1 paused flash;
+}
+
+@keyframes flash {
+ 50% {
+   background-color: var(--hover-style);
+ }    
 }
 
 #folder__control {
@@ -134,6 +141,7 @@ pre {
 #title__bar.open .controls {
   transition-duration: 0.7s;
   width: auto;
+  animation-play-state: running;
 }
 
 .folder__link {
