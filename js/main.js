@@ -88,7 +88,6 @@ window.addEventListener('DOMContentLoaded', () => {
         page.append(tbar, wpage, hcontent);
         window.addEventListener('hashchange', () => {
             let nHash = window.location.hash.slice(1);
-            console.log(nHash);
             if (nHash == '') {
                 wpage.classList.remove('open');
                 tbar.classList.remove('open');
