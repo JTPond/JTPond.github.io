@@ -35,7 +35,8 @@
       "f_order": [
         "Calcify",
         "ICalcify",
-        "python-requirements"
+        "python-requirements",
+        "Typescript"
       ],
       "a_order": []
     },
@@ -79,7 +80,7 @@
       },
       "Notebook": {
         "pinned": false,
-        "mtime": "2020-08-07T15:49:32",
+        "mtime": "2020-12-24T22:54:47",
         "url": "./archive/Open_Source/ICalcify/Notebook/article.html"
       },
       "Introduction": {
@@ -89,8 +90,22 @@
       },
       "New_Release": {
         "pinned": false,
-        "mtime": "2020-09-12T12:07:53",
+        "mtime": "2020-12-24T22:54:37",
         "url": "./archive/Open_Source/ICalcify/New_Release/article.html"
+      }
+    },
+    "Typescript": {
+      "self": {
+        "parent": "Open_Source",
+        "f_order": [],
+        "a_order": [
+          "Tricks"
+        ]
+      },
+      "Tricks": {
+        "pinned": true,
+        "mtime": "2020-12-24T22:50:35",
+        "url": "./archive/Open_Source/Typescript/Tricks/article.html"
       }
     }
   },
