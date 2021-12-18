@@ -36,7 +36,8 @@
         "Calcify",
         "ICalcify",
         "python-requirements",
-        "Typescript"
+        "Typescript",
+        "Windmill"
       ],
       "a_order": []
     },
@@ -106,6 +107,20 @@
         "pinned": true,
         "mtime": "2020-12-24T22:50:35",
         "url": "./archive/Open_Source/Typescript/Tricks/article.html"
+      }
+    },
+    "Windmill": {
+      "self": {
+        "parent": "Open_Source",
+        "f_order": [],
+        "a_order": [
+          "Introduction"
+        ]
+      },
+      "Introduction": {
+        "pinned": false,
+        "mtime": "2021-12-17T20:09:17",
+        "url": "./archive/Open_Source/Windmill/Introduction/article.html"
       }
     }
   },
