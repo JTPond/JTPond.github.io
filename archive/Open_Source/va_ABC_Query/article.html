@@ -1,0 +1,66 @@
+<h1>Virginia ABC Database Query</h1>
+<h2>Show which VA ABC stores near the store specified in the first argument have hard to find bottles</h2>
+<pre><code class="language-python">import sys
+import time
+import urllib3
+import xml.etree.ElementTree as ET
+
+# Example
+alloc_b = {
+    #Bottle name: Product ID 
+    &quot;Buffalo Trace Bourbon 0.75L&quot;:&quot;018006&quot;,
+	&quot;Buffalo Trace Bourbon 1.75L&quot;:&quot;018008&quot;,
+	&quot;Elijah Craig Barrel Proof Bourbon&quot;:&quot;017917&quot;,
+	&quot;E H Taylor Jr. Straight Rye Whiskey&quot;:&quot;027101&quot;,
+	&quot;E H Taylor Jr. Small Batch Whiskey&quot;:&quot;021602&quot;,
+	&quot;E H Taylor Jr. Barrel Proof Bourbon&quot;:&quot;021600&quot;,
+    &quot;E H Taylor Jr. single barrel&quot;:&quot;021589&quot;,
+    &quot;Eagle Rare 10 Year Bourbon 0.35L&quot;:&quot;017764&quot;,
+	&quot;Eagle Rare 10 Year Bourbon 0.75L&quot;:&quot;017766&quot;,
+    &quot;Eagle Rare 10 Year Bourbon 1.75L&quot;:&quot;017768&quot;,
+    &quot;Elmer T Lee Bourbon&quot;:&quot;017946&quot;,
+    &quot;WL Weller Special Reserve Bourbon 0.75L&quot;:&quot;021986&quot;,
+    &quot;WL Weller Special Reserve Bourbon 1.75L&quot;:&quot;021988&quot;,
+    &quot;Old Weller Antique 107 Bourbon&quot;:&quot;022036&quot;,
+    &quot;Stagg Jr.&quot;:&quot;021540&quot;,
+    &quot;1792 Bottled In Bond Kentucky Straight Bourbon&quot;:&quot;016466&quot;,
+    &quot;George Dickel Single Barrel 15 Year&quot;:&quot;026595&quot;,
+    &quot;High West A Midwinter Nights Dram&quot;:&quot;027041&quot;, 
+    &quot;Kentucky Owl St Patrick Edition&quot;:&quot;019324&quot;, 
+    &quot;Michter's Single Barrel 10 Yr. Bourbon&quot;:&quot;019876&quot;,
+    &quot;Michter's Toasted Barrel Finish Bourbon&quot;:&quot;019872&quot;, 
+    &quot;Old Fitzgerald 8 Yr Bottled In Bond Bourbon&quot;:&quot;016369&quot;, 
+    &quot;Old Fitzgerald 9 Year Bottled In Bond Bourbon&quot;:&quot;016372&quot;, 
+    &quot;Old Fitzgerald 14 Yr Bib Decanter&quot;:&quot;016375&quot;, 
+    &quot;Old Fitzgerald Bottled In Bond Decanter&quot;:&quot;016373&quot;,
+    &quot;Orphan Barrel copper tongue 16 year&quot;:&quot;017532&quot;, 
+    &quot;Shenks Homestead Sour Mash Whiskey&quot;:&quot;021492&quot;, 
+    &quot;Thomas S. Moore Bourbon Port Cask&quot;:&quot;086494&quot;, 
+    &quot;Ardbeg Arrrrrrrdbeg&quot;:&quot;004248&quot;
+}
+
+http = urllib3.PoolManager()
+
+sid = int(sys.argv[1])
+
+for name, pid in alloc_b.items():
+    printed = False
+    r = http.request('GET', f&quot;https://www.abc.virginia.gov/webapi/inventory/storeNearby?storeNumber={sid}&amp;productCode={pid}&amp;mileRadius=15&amp;storeCount=5&amp;buffer=2&quot;)
+    xm = r.data.decode(&quot;utf-8&quot;)
+    try:
+        root = ET.fromstring(xm)    
+    except ET.ParseError as pe:
+        continue
+    for q,a in zip(root.findall(&quot;.//storeInfo/quantity&quot;),root.findall(&quot;.//storeInfo/address&quot;)):
+        if int(q.text) &gt; 0:
+            if not printed:
+                print(name)
+                printed = True
+            print('\t'+q.text+' @ '+a.text)
+    for q,a in zip(root.findall(&quot;.//nearbyStores/quantity&quot;),root.findall(&quot;.//nearbyStores/address&quot;)):
+        if int(q.text) &gt; 0:
+            if not printed:
+                print(name)
+                printed = True
+            print('\t'+q.text+' @ '+a.text)
+</code></pre>
