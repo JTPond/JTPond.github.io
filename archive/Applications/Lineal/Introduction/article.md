@@ -22,3 +22,5 @@ Document settings:
 
 Help screen:
 ![Command Mode](./assets/screen5.png)
+
+If you're interested, sign up [here](https://lineal.app)
