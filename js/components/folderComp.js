@@ -2,7 +2,7 @@ export class FolderComp {
     constructor(folder) {
         this.folder = folder;
     }
-    getArticleIcon(title, art) {
+    getArticleIcon(title) {
         let fig = document.createElement('figure');
         fig.classList.add("icon");
         let icon = document.createElement('img');
@@ -15,7 +15,7 @@ export class FolderComp {
         });
         return fig;
     }
-    getFolderIcon(title, fold) {
+    getFolderIcon(title) {
         let fig = document.createElement('figure');
         fig.classList.add("icon");
         let icon = document.createElement('img');
@@ -32,11 +32,11 @@ export class FolderComp {
         let out = document.createElement('div');
         out.classList.add("folder");
         this.folder.f_order.forEach(key => {
-            let icon = this.getFolderIcon(key, this.folder.folders.get(key));
+            let icon = this.getFolderIcon(key);
             out.append(icon);
         });
         this.folder.a_order.forEach(key => {
-            out.append(this.getArticleIcon(key, this.folder.articles.get(key)));
+            out.append(this.getArticleIcon(key));
         });
         return out;
     }

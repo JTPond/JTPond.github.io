@@ -15,14 +15,8 @@
       "parent": ".",
       "f_order": [],
       "a_order": [
-        "Introduction",
         "Critters"
       ]
-    },
-    "Introduction": {
-      "pinned": false,
-      "mtime": "2020-08-04T21:13:36",
-      "url": "./archive/Machine_Learning/Introduction/article.html"
     },
     "Critters": {
       "pinned": false,

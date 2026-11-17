@@ -1,8 +1,8 @@
-import { PathWizard } from "./componants/pathWizard.js";
-import { FolderComp } from "./componants/folderComp.js";
-import { ArticleComp } from "./componants/articleComp.js";
-import { TBarControls } from "./componants/tbarControls.js";
-import { HPLink } from "./componants/hplink.js";
+import { PathWizard } from "./components/pathWizard.js";
+import { FolderComp } from "./components/folderComp.js";
+import { ArticleComp } from "./components/articleComp.js";
+import { TBarControls } from "./components/tbarControls.js";
+import { HPLink } from "./components/hplink.js";
 class main {
     constructor() {
         this.index = new PathWizard();
@@ -40,11 +40,11 @@ window.addEventListener('DOMContentLoaded', () => {
     rec_head.textContent = "Recently Updated";
     rec_head.classList.add('homepage__head');
     __main__.index.load('./index.json').then(() => {
-        __main__.index.pinned.forEach(([path, art]) => {
+        __main__.index.pinned.forEach(([path, _]) => {
             let pin = new HPLink(path);
             pin_list.append(pin.getHTML());
         });
-        __main__.index.recent.forEach(([path, art]) => {
+        __main__.index.recent.forEach(([path, _]) => {
             let rec = new HPLink(path);
             rec_list.append(rec.getHTML());
         });
